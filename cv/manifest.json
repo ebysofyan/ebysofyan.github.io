@@ -1,0 +1,16 @@
+{
+    "short_name": "Online CV",
+    "name": "Online CV",
+    "start_url": "/cv",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#0073b7",
+    "background_color": "#fff",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "type": "image/png",
+            "sizes": "144x144 192x192 512x512"
+        }
+    ]
+}
