@@ -92,8 +92,9 @@
                             </div>
                             <div class="col-md-12">
                                 <p>
-                                    An Ordinary People who are currently active as Student 8th Semester at STMIK Bumigora Mataram and work as Android Developer at Bima Jaya.
-                                    Other than that, i work as Python Course Trainer at ITEC Mataram. I Love my job . . .
+                                    An Ordinary People who are currently active as Student 8th Semester at STMIK Bumigora Mataram and work as Android Developer
+                                    at Bima Jaya. Other than that, i work as Python Course Trainer at ITEC Mataram. I Love
+                                    my job . . .
                                 </p>
                             </div>
                         </div>
@@ -390,7 +391,7 @@
                                     <h3>Sharing</h3>
 
                                     <p>
-                                        Love to share my experience and knowledge to Tech Community in Lombok 
+                                        Love to share my experience and knowledge to Tech Community in Lombok
                                     </p>
 
                                 </div>
@@ -551,6 +552,23 @@
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+
+    <script>
+        self.addEventListener('load', () => {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').then((registration) => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+                    messaging.useServiceWorker(registration)
+                }).catch((err) => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+                navigator.serviceWorker.ready.then((registration) => {
+                    console.log('Service Worker Ready')
+                })
+            }
+        })
+    </script>
 </body>
 
 </html>
