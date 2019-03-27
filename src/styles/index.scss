@@ -1,0 +1,80 @@
+@import "./card";
+@import "./button";
+@import "./colors";
+
+body {
+  font-family: "Helvetica";
+  padding: 0px;
+  margin: 0px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.right {
+  float: right;
+}
+
+.bg-linear- {
+  position: relative;
+  color: white;
+  background: #005C97;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+@media only screen and (max-width: 600px) {
+  .m-container{
+    padding: 8px;
+    margin-top: 32px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .m-container{
+    padding: 8px;
+    margin-top: 32px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .m-container{
+    padding: 3rem;
+  }
+}
+
+.pr-container {
+  margin-bottom: 20px;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .pr-photo {
+    width: 125px;
+    height: 125px;
+    padding: 8px;
+    border-radius: 50%;
+  }
+
+  .pr-caption-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pr-name {
+    text-align: center;
+    font-size: 18px;
+    color: $textPrimary;
+  }
+
+  .pr-caption {
+    text-align: center;
+    font-size: 15px;
+    color: $textSecondary;
+  }
+}

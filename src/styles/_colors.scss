@@ -1,0 +1,20 @@
+$greyLightest: #fafafa;
+$greyDark: #999999;
+
+$textPrimary: #343a40;
+$textSecondary: #868e96;
+
+$shadow: 0 3px 5px rgba(0,0,0,.025);
+
+.text-primary{
+    color: $textPrimary;
+}
+
+.text-secondary{
+    color: $textSecondary;
+}
+
+.bg-primary{
+    // background-color: #005C97;
+    background-color: #136a8a;
+}
