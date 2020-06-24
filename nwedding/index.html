@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Eby Sofyan & Ulfana Nurmala Wedding Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+JP:wght@300&display=swap');
+
+        body {
+            background-color: #eee;
+        }
+
+        .c-container {
+            height: 400x;
+            width: 200px;
+            position: absolute;
+            top: -200px;
+            right: -100px;
+        }
+
+        .centered-text {
+            text-align: center !important;
+        }
+
+        .border-left-right {
+            border-right: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+
+        .time-info {
+            margin-top: 32px;
+        }
+
+        .time-info p {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .names {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .info {
+            margin-bottom: 8px;
+        }
+
+        .card {
+            background-image: url('./img/leaf.png'), url('./img/leaf2.png');
+            background-size: 150px;
+            background-color: #fff;
+            background-position: 20px 70px, right 20px top 70px;
+            background-repeat: no-repeat;
+            border-radius: 12px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div class='container' id="app">
+        <div class="row" style="margin-top: 32px">
+            <div class="card col s12 m10 l10 offset-l1 offset-m1">
+                <!-- <div class="card-content">
+                    <p>Maaf, kode yang anda masukkan salah.</p>
+                </div> -->
+                <div class="card-content" v-show="isInvited">
+                    <p style="font-family: 'Noto Sans JP'">Hi, <span style="font-weight: bold"
+                            id="to-name">{{invitedPerson.name}}</span></p>
+                    <div class="names" style="text-align: center; margin-top: 32px">
+                        <p style="margin-left: -32px; font-size: 48px">Eby Sofyan Fadly</p>
+                        <p style="font-family: 'Easy November'; font-size: 22px">&</p>
+                        <p style="margin-left: 32px; font-size: 48px">Ulfana Nurmala</p>
+                    </div>
+                    <div class="centered-text time-info" style="color:rgba(0,0,0,0.7); font-size: 16px">
+                        <p>Bersamaan dengan ini mengundang Bapak / Ibu</p>
+                        <p>untuk menghadiri acara akad nikah yang akan dilaksanakan pada</p>
+                    </div>
+                    <div class="row time-info">
+                        <div class="col info s12 centered-text" style="font-size: 18px">
+                            <p>Ahad,</p>
+                            <p>26 Juli 2020, 14.30 WITA</p>
+                        </div>
+                        <div class="col s12 centered-text time-info">
+                            <p>JL Kopang Wajagesang, RT 1 RW 1, Jurit, Bebuak, Kopang, Lombok Tengah</p>
+                            <a style="margin-top: 8px"
+                                href="https://www.google.com/maps/place/JPE+Jurita+PD+Elektronik/@-8.6090156,116.3634237,17z/data=!3m1!4b1!4m5!3m4!1s0x2dcdb4535d9f814f:0x3b7cd5a0e2879457!8m2!3d-8.6090209!4d116.3656124"
+                                class="btn btn-small deep-orange darken-4" target="_blank"><i
+                                    class="material-icons left">location_on</i> Lihat di Map</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content" v-show="!isInvited">
+                    <h4 style="text-align: center;">Maaf, kode tidak ditemukan</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    isInvited: true,
+                    invitedPerson: {
+                        name: "",
+                        invitation_url: "",
+                        published: false,
+                    }
+                }
+            },
+            mounted() {
+                let self = this;
+                let invitationCode = self.getInvitationCode(window.location.search)
+                fetch(`http://0.0.0.0:8085/invitations/${invitationCode}`)
+                    .then(res => res.json())
+                    .then(invitation => {
+                        self.invitedPerson = invitation
+                        self.isInvited = true
+                    }).catch(err => {
+                        console.log(err);
+                        self.isInvited = false
+                    });
+            },
+            methods: {
+                getInvitationCode: function (queryString) {
+                    const urlParams = new URLSearchParams(queryString);
+                    return urlParams.get("invitation_code") || ""
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
