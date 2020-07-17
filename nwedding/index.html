@@ -28,8 +28,8 @@
         }
 
         .border-left-right {
-            border-right: 1px solid #ccc;
-            border-left: 1px solid #ccc;
+            border-right: 1px solid rgba(0,0,0,0.7);;
+            border-left: 1px solid rgba(0,0,0,0.7);;
         }
 
         .time-info {
@@ -44,45 +44,65 @@
             font-family: 'Dancing Script', cursive;
         }
 
+        .names>img {
+            width: auto;
+            height: 189px;
+        }
+
         .info {
             margin-bottom: 8px;
         }
 
         .card {
-            background-image: url('./img/leaf.png'), url('./img/leaf2.png');
-            background-size: 150px;
-            background-color: #fff;
-            background-position: 20px 70px, right 20px top 70px;
-            background-repeat: no-repeat;
+            /* background-image: url('./img/cowok.jpg'), url('./img/cewek.jpg'); */
+            /* background-size: 150px; */
+            /* background-color: #fff; */
+            /* background-position: 55px 70px, right 55px top 70px; */
+            /* background-repeat: no-repeat; */
             border-radius: 12px;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body>
     <div class='container' id="app">
         <div class="row" style="margin-top: 32px">
-            <div class="card col s12 m10 l10 offset-l1 offset-m1">
-                <!-- <div class="card-content">
-                    <p>Maaf, kode yang anda masukkan salah.</p>
-                </div> -->
-                <div class="card-content" v-show="isInvited">
-                    <p style="font-family: 'Noto Sans JP'">Hi, <span style="font-weight: bold"
-                            id="to-name">{{invitedPerson.name}}</span></p>
-                    <div class="names" style="text-align: center; margin-top: 32px">
-                        <p style="margin-left: -32px; font-size: 48px">Eby Sofyan Fadly</p>
-                        <p style="font-family: 'Easy November'; font-size: 22px">&</p>
-                        <p style="margin-left: 32px; font-size: 48px">Ulfana Nurmala</p>
+            <div class="card col s12 m10 l10 offset-l1 offset-m1" style="background-color: #6f8a91;">
+                <div class="card-content" v-if="!invited">
+                    <center>
+                        <p>Maaf, kode yang anda masukkan salah.</p>
+                    </center>
+                </div>
+                <div class="card-content" v-if="invited">
+                    <p style="font-family: 'Noto Sans JP'; font-size: 18px;">Assalamu'alaikum,
+                        <strong>{{invited.name}}</strong></p>
+
+                    <div class="names" style="text-align: center; margin-top: 16px;">
+                        <img src="./img/cowok_cewek.png" alt="">
+                        <p style="font-size: 40px">Eby Sofyan Fadly</p>
+                        <p style="font-family: 'Easy November'; font-size: 32px">&</p>
+                        <p style="font-size: 40px">Ulfana NS Devi </p>
                     </div>
                     <div class="centered-text time-info" style="color:rgba(0,0,0,0.7); font-size: 16px">
                         <p>Bersamaan dengan ini mengundang Bapak / Ibu</p>
                         <p>untuk menghadiri acara akad nikah yang akan dilaksanakan pada</p>
                     </div>
                     <div class="row time-info">
-                        <div class="col info s12 centered-text" style="font-size: 18px">
+                        <!-- <div class="col info s12 centered-text" style="font-size: 18px">
                             <p>Ahad,</p>
-                            <p>26 Juli 2020, 14.30 WITA</p>
+                            <p>26 Juli 2020, 09.00 WITA</p>
+                        </div> -->
+                        <div class="col info s12 l4 centered-text" style="font-size: 14px; color:rgba(0,0,0,0.7);">
+                            <p>Akad</p>
+                            <p>09.00</p>
+                        </div>
+                        <div class="col info s12 l4 centered-text border-left-right" style="font-size: 18px">
+                            <p>Ahad,</p>
+                            <p>26 Oktober 2020</p>
+                        </div>
+                        <div class="col info s12 l4 centered-text" style="font-size: 14px;color:rgba(0,0,0,0.7);">
+                            <p>Walimah</p>
+                            <p>10.00 - 12.00</p>
                         </div>
                         <div class="col s12 centered-text time-info">
                             <p>JL Kopang Wajagesang, RT 1 RW 1, Jurit, Bebuak, Kopang, Lombok Tengah</p>
@@ -93,46 +113,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-content" v-show="!isInvited">
-                    <h4 style="text-align: center;">Maaf, kode tidak ditemukan</h4>
-                </div>
             </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="./data/invitations.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
-            data() {
-                return {
-                    isInvited: true,
-                    invitedPerson: {
-                        name: "",
-                        invitation_url: "",
-                        published: false,
-                    }
+            data: {
+                // https://www.uuidgenerator.net/
+                invitations: invitations
+            },
+            computed: {
+                code: function () {
+                    var uri = window.location.search.substring(1);
+                    return uri.split('=')[1];
+                },
+                invited: function () {
+                    var code = this.code;
+                    return this.invitations.find(function (i) {
+                        return i.id == code
+                    })
                 }
             },
-            mounted() {
-                let self = this;
-                let invitationCode = self.getInvitationCode(window.location.search)
-                fetch(`http://0.0.0.0:8085/invitations/${invitationCode}`)
-                    .then(res => res.json())
-                    .then(invitation => {
-                        self.invitedPerson = invitation
-                        self.isInvited = true
-                    }).catch(err => {
-                        console.log(err);
-                        self.isInvited = false
-                    });
-            },
-            methods: {
-                getInvitationCode: function (queryString) {
-                    const urlParams = new URLSearchParams(queryString);
-                    return urlParams.get("invitation_code") || ""
-                }
-            }
-        });
+        })
     </script>
 </body>
 
