@@ -70,7 +70,7 @@
 <body>
     <div class='container' id="app">
         <div class="row" style="margin-top: 32px">
-            <div class="card col s12 m10 l10 offset-l1 offset-m1" style="background-color: #daf6fa;">
+            <div id="card" class="card col s12 m10 l10 offset-l1 offset-m1" style="background-color: #daf6fa;">
                 <div class="card-content" v-if="!invited">
                     <center>
                         <p>Maaf, kode yang anda masukkan salah.</p>
@@ -127,20 +127,34 @@
             el: '#app',
             data: {
                 // https://www.uuidgenerator.net/
-                invitations: invitations
+                invitations: invitations,
+                invited: null,
             },
-            computed: {
-                code: function () {
-                    var uri = window.location.search.substring(1);
-                    return uri.split('=')[1];
+            methods: {
+                getQueryParams: function (queryParam) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(queryParam);
                 },
-                invited: function () {
-                    var code = this.code;
+                initUi() {
+                    let uiType = this.getQueryParams("ui-type") || "colored";
+                    let card = document.getElementById("card")
+                    if (uiType == "colored") {
+                        card.style.backgroundColor = "#daf6fa"
+                    } else {
+                        card.style.backgroundColor = "#fff"
+                    }
+                },
+                getInvited() {
+                    let code = this.getQueryParams("code");
                     return this.invitations.find(function (i) {
                         return i.id == code
                     })
                 }
             },
+            mounted() {
+                this.initUi()
+                this.invited = this.getInvited()
+            }
         })
     </script>
 </body>
