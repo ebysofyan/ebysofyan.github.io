@@ -35,6 +35,9 @@
         }
 
         .time-info {
+            /* margin-top: 32px; */
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 16px;
             margin-top: 32px;
         }
 
@@ -77,18 +80,24 @@
                     </center>
                 </div>
                 <div class="card-content" v-if="invited">
-                    <p style="font-family: 'Noto Sans JP'; font-size: 18px;">Assalamu'alaikum,
-                        <strong>{{invited.name}}</strong></p>
-
+                    <p style="font-family: 'Noto Sans JP';">Hi, <strong>{{invited.name}}</strong></p>
                     <div class="names" style="text-align: center; margin-top: 16px;">
                         <img src="./img/cowok_cewek_no_bg.png" alt="">
+                    </div>
+                    <!-- <div class="centered-text time-info">
+                        <p style="font-family: 'Noto Sans JP';">Assalamu'alaikum,
+                            <strong>{{invited.name}}</strong></p>
+                    </div> -->
+                    <div class="centered-text time-info" style="color:rgba(0,0,0,0.7); font-size: 16px">
+                        <p>Together with their parent</p>
+                    </div>
+                    <div class="centered-text names" style="text-align: center;">
                         <p style="font-size: 40px">Eby Sofyan Fadly</p>
-                        <p style="font-family: 'Easy November'; font-size: 32px">&</p>
+                        <p style="font-family: 'Easy November'; font-size: 24px">&</p>
                         <p style="font-size: 40px">Ulfana Nurmala Sari Devi </p>
                     </div>
-                    <div class="centered-text time-info" style="color:rgba(0,0,0,0.7); font-size: 16px">
-                        <p>Bersamaan dengan ini mengundang Bapak / Ibu</p>
-                        <p>untuk menghadiri acara akad nikah yang akan dilaksanakan pada</p>
+                    <div class="centered-text time-info" style="margin-top: 0px;">
+                        <p>Invite you to join their wedding</p>
                     </div>
                     <div class="row time-info">
                         <!-- <div class="col info s12 centered-text" style="font-size: 18px">
