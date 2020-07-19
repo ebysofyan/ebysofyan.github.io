@@ -74,13 +74,13 @@
     <div class='container' id="app">
         <div class="row" style="margin-top: 32px">
             <div id="card" class="card col s12 m10 l10 offset-l1 offset-m1" style="background-color: #daf6fa;">
-                <div class="card-content" v-if="!invited">
+                <!-- <div class="card-content" v-if="!invited">
                     <center>
                         <p>Maaf, kode yang anda masukkan salah.</p>
                     </center>
-                </div>
-                <div class="card-content" v-if="invited">
-                    <p style="font-family: 'Noto Sans JP';">Hi, <strong>{{invited.name}}</strong></p>
+                </div> -->
+                <div class="card-content">
+                    <!-- <p style="font-family: 'Noto Sans JP';">Hi, <strong>{{invited.name}}</strong></p> -->
                     <div class="names" style="text-align: center; margin-top: 24px;">
                         <img src="./img/cowok_cewek_no_bg.png" alt="">
                     </div>
@@ -116,13 +116,13 @@
                             <p>Walimah</p>
                             <p>10.00 - 12.00</p>
                         </div>
-                        <div class="col s12 centered-text time-info">
+                        <!-- <div class="col s12 centered-text time-info">
                             <p>JL Kopang Wajagesang, RT 1 RW 1, Jurit, Bebuak, Kopang, Lombok Tengah</p>
                             <a style="margin-top: 8px"
                                 href="https://www.google.com/maps/place/JPE+Jurita+PD+Elektronik/@-8.6090156,116.3634237,17z/data=!3m1!4b1!4m5!3m4!1s0x2dcdb4535d9f814f:0x3b7cd5a0e2879457!8m2!3d-8.6090209!4d116.3656124"
                                 class="btn btn-small deep-orange darken-4" target="_blank"><i
                                     class="material-icons left">location_on</i> Lihat di Map</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -132,6 +132,22 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="./data/invitations.js"></script>
     <script>
+        getQueryParams = (queryParam) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(queryParam);
+        }
+
+        window.onload = () => {
+            let uiType = this.getQueryParams("ui-type") || "colored";
+            let card = document.getElementById("card")
+            if (uiType == "colored") {
+                card.style.backgroundColor = "#daf6fa"
+            } else {
+                card.style.backgroundColor = "#fff"
+            }
+        }
+    </script>
+    <!-- <script>
         var app = new Vue({
             el: '#app',
             data: {
@@ -165,7 +181,7 @@
                 this.invited = this.getInvited()
             }
         })
-    </script>
+    </script> -->
 </body>
 
 </html>
