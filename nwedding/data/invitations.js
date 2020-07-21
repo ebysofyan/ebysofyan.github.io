@@ -298,7 +298,7 @@ var invitations = [
     name: "Ummu Rini Sayang"
   },
   {
-    id: "d5c8c553-6e6a-40f8-9bd3-345159408158",
+    id: "a9f1659e-80ac-4732-8bf9-9854f27f8bde",
     name: "Kak Fitri"
   },
 ]
