@@ -78,7 +78,10 @@
                     <h4>Eby & Ulfana Wedding Invitations</h4>
                 </li>
                 <li class="collection-item" v-for="invited in invitations" :key="invited.id">
-                    <div>{{invited.name}}<a href="#!" v-on:click="copyToClipboard(invited)" class="secondary-content"><i
+                    <div>{{invited.name}}
+                        <a href="#!" v-on:click="viewWeddingPage(invited)" class="secondary-content">View</a>
+                        &nbsp;&nbsp;
+                        <a href="#!" v-on:click="copyToClipboard(invited)" class="secondary-content"><i
                                 class="material-icons">content_copy</i></a>
                     </div>
                 </li>
@@ -96,6 +99,9 @@
                 invitationsCount: 0
             },
             methods: {
+                viewWeddingPage: function (invited) {
+                    window.open(`https://ebysofyan.github.io/xwedding/?invitation_code=${invited.id}`)
+                },
                 copyToClipboard: function (invited) {
                     console.log(invited.id)
                     let copyValue = `${invited.name} \n\nhttps://ebysofyan.github.io/xwedding/?invitation_code=${invited.id}`
