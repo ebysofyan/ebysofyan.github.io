@@ -63,6 +63,10 @@ var invitations = [
     id: "72fcac4e-b352-11e8-96f8-529269fb1459",
     name: "Akh Endra Faelani"
   },
+  {
+    id: "fdc153b9-9ed8-401f-a7d1-099eff31e8f6",
+    name: "Ibu Kartarina Yang Baik, Jangan Lupa Es Krimnya"
+  },
   // My Father's Invited Friend
   {
     id: "72fcae7e-b352-11e8-96f8-529269fb1459",
