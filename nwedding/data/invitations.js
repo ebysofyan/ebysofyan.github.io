@@ -293,4 +293,12 @@ var invitations = [
     id: "fec1627b-87b8-4c71-bb68-0092bc9a8bdb",
     name: "Heri Khazwardi"
   },
+  {
+    id: "d5c8c553-6e6a-40f8-9bd3-345159408158",
+    name: "Ummu Rini Sayang"
+  },
+  {
+    id: "d5c8c553-6e6a-40f8-9bd3-345159408158",
+    name: "Kak Fitri"
+  },
 ]
