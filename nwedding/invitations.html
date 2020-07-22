@@ -83,6 +83,8 @@
                         &nbsp;&nbsp;
                         <a href="#!" v-on:click="copyToClipboard(invited)" class="secondary-content"><i
                                 class="material-icons">content_copy</i></a>
+                        &nbsp;&nbsp;
+                        <a href="#!" v-on:click="copyToClipboard1(invited)" class="secondary-content">Copy</a>
                     </div>
                 </li>
             </ul>
@@ -101,6 +103,18 @@
             methods: {
                 viewWeddingPage: function (invited) {
                     window.open(`https://ebysofyan.github.io/xwedding/?invitation_code=${invited.id}`)
+                },
+                copyToClipboard1: function (invited) {
+                    console.log(invited.id)
+                    let copyValue = `Bismillah, \n~ Tidak ada kata-kata, cukup do'akaan saja . . . 😅 ~👇🏻\n\nhttps://ebysofyan.github.io/xwedding/?invitation_code=${invited.id}`
+                    const el = document.createElement('textarea');
+                    el.value = copyValue;
+                    el.setAttribute('type', 'hidden');
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                    M.toast({ html: `Invitation for ${invited.name} copied!` })
                 },
                 copyToClipboard: function (invited) {
                     console.log(invited.id)

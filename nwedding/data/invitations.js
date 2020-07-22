@@ -305,4 +305,8 @@ var invitations = [
     id: "a9f1659e-80ac-4732-8bf9-9854f27f8bde",
     name: "Kak Fitri"
   },
+  {
+    id: "39e36a4c-b43e-4d8a-ad78-33bc15cd1046",
+    name: "Nurul Aeni"
+  }
 ]
