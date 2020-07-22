@@ -71,6 +71,22 @@ var invitations = [
     id: "ad1dcddd-74ce-4f0b-8715-cbd49801860e",
     name: "Munawar & Istri"
   },
+  {
+    id: "3cd50fec-a423-4ae8-83de-62d9170bcfbf",
+    name: "Kanda Agus Putra"
+  },
+  {
+    id: "e1f007c6-80a7-4cc3-9e4d-e03e8206f7de",
+    name: "Bang Irsyad"
+  },
+  {
+    id: "6ff69eb3-4d70-49fb-bca9-26c563164817",
+    name: "Abdul Aziz"
+  },
+  {
+    id: "1c48ac73-3d0b-443f-8125-6bce90e23b42",
+    name: "Bang Kahfi"
+  },
   // My Father's Invited Friend
   {
     id: "72fcae7e-b352-11e8-96f8-529269fb1459",
