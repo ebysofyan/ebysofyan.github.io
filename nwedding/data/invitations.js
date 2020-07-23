@@ -87,6 +87,10 @@ var invitations = [
     id: "1c48ac73-3d0b-443f-8125-6bce90e23b42",
     name: "Bang Kahfi"
   },
+  {
+    id: "b28af3e9-9ddb-4783-a565-817205c98562",
+    name: "Hartono"
+  },
   // My Father's Invited Friend
   {
     id: "72fcae7e-b352-11e8-96f8-529269fb1459",
