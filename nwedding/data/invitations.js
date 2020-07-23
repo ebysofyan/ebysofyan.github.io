@@ -328,5 +328,21 @@ var invitations = [
   {
     id: "39e36a4c-b43e-4d8a-ad78-33bc15cd1046",
     name: "Nurul Aeni"
-  }
+  },
+  {
+    id: "d1179e21-d4fb-44a2-a987-4b503f43d9d6",
+    name: "Mba Helmy"
+  },
+  {
+    id: "13a1b434-4791-4844-ade9-a23b28f3786b",
+    name: "Mba Fidya"
+  },
+  {
+    id: "0b3cc51e-330d-4ce3-82ee-f2398d7c6f37",
+    name: "Jawari"
+  },
+  {
+    id: "5fdcf2f9-c733-4569-9ddf-8c013ad35d35",
+    name: "Mulianti Lestari"
+  },
 ]
